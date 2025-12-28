@@ -1,25 +1,42 @@
 class_name Player
 extends CharacterBody2D
 
+# Constants
+const TILE_SIZE := 16
+const MOVE_SPEED := 0.1
 
-const SPEED = 32.0
-const JUMP_VELOCITY = -400.0
+# Sub-nodes
+@onready var sprite := $Sprite2D
+
+# Local State
+var moving := false
 
 
 func _physics_process(delta: float) -> void:
+	position_move(delta)
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var x_direction := Input.get_axis("left", "right")
-	if x_direction:
-		velocity.x = x_direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	var y_direction := Input.get_axis("up", "down")
-	if y_direction:
-		velocity.y = y_direction * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+# Tile-Based Movement
+func position_move(_delta: float) -> void:
+	# Query Input
+	var move_direction := Vector2.ZERO;
+	if Input.is_action_just_pressed("left"):
+		sprite.flip_h = true
+		move_direction.x = -TILE_SIZE;
+	elif Input.is_action_just_pressed("right"):
+		sprite.flip_h = false
+		move_direction.x = TILE_SIZE;
+	elif Input.is_action_just_pressed("up"):
+		move_direction.y = -TILE_SIZE;
+	elif Input.is_action_just_pressed("down"):
+		move_direction.y = TILE_SIZE;
 
-	move_and_slide()
+	# move_direction *= _delta
+	if move_direction != Vector2.ZERO:
+		var collided := test_move(transform, move_direction)
+		if collided:
+			return
+		elif not moving:
+			moving = true
+			var position_tween := create_tween()
+			position_tween.tween_property(self, "position", position + move_direction, MOVE_SPEED)
+			position_tween.tween_callback(func(): moving = false)
