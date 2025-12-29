@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Danger" load_steps=2 format=3 uid="uid://yn425i2y0d6d"]
+
+[ext_resource type="Script" uid="uid://cktaf7cfwqhpw" path="res://resources/Tiles/Danger Tiles/Danger.gd" id="1_o2arx"]
+
+[resource]
+resource_name = "Spikes"
+script = ExtResource("1_o2arx")
+damage = 5
+metadata/_custom_type_script = "uid://cktaf7cfwqhpw"

@@ -1,19 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpoktg0mpwiow"]
+[gd_scene load_steps=5 format=3 uid="uid://bpoktg0mpwiow"]
 
 [ext_resource type="Texture2D" uid="uid://biqcho5tunuss" path="res://assets/tilemap_packed.png" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://detqadsv8c1as" path="res://scripts/player.gd" id="2_v6fml"]
+[ext_resource type="Script" uid="uid://dmgp3phai31bm" path="res://scripts/sensor_suite.gd" id="3_3li8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0vlq"]
-size = Vector2(15, 14)
+custom_solver_bias = 1.0
+size = Vector2(15, 15)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("2_v6fml")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_p0vlq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_p0vlq")
 region_enabled = true
 region_rect = Rect2(16, 128, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p0vlq")
+
+[node name="SensorSuite" type="Node2D" parent="."]
+script = ExtResource("3_3li8b")
+
+[node name="Up" type="RayCast2D" parent="SensorSuite"]
+position = Vector2(0, -10)
+rotation = 3.1415927
+target_position = Vector2(0, 5)
+hit_from_inside = true
+
+[node name="Down" type="RayCast2D" parent="SensorSuite"]
+position = Vector2(0, 10)
+target_position = Vector2(0, 5)
+hit_from_inside = true
+
+[node name="Left" type="RayCast2D" parent="SensorSuite"]
+position = Vector2(-10, 0)
+rotation = 1.5707964
+target_position = Vector2(0, 5)
+hit_from_inside = true
+
+[node name="Right" type="RayCast2D" parent="SensorSuite"]
+position = Vector2(10, 0)
+rotation = -1.5707964
+target_position = Vector2(0, 5)
+hit_from_inside = true
