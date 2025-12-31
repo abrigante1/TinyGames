@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="RecoveryPotion" load_steps=2 format=3 uid="uid://b6uoq7invxequ"]
-
-[ext_resource type="Script" uid="uid://32bsqyl70e4k" path="res://resources/Tiles/Potions/RecoveryPotion.gd" id="1_i0vq5"]
-
-[resource]
-script = ExtResource("1_i0vq5")
-recovery_type = 1
-heal_amount = 2
-metadata/_custom_type_script = "uid://32bsqyl70e4k"

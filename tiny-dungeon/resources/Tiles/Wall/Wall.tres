@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Wall" load_steps=2 format=3 uid="uid://dwigeqlhavusl"]
 
-[ext_resource type="Script" uid="uid://cnj2dvwbsv8t4" path="res://resources/Tiles/Environment/Wall.gd" id="1_s2em5"]
+[ext_resource type="Script" uid="uid://cnj2dvwbsv8t4" path="res://resources/Tiles/Wall/wall.gd" id="1_4l0ey"]
 
 [resource]
 resource_name = "Wall"
-script = ExtResource("1_s2em5")
+script = ExtResource("1_4l0ey")
 collision_response_type = 1
 metadata/_custom_type_script = "uid://cnj2dvwbsv8t4"

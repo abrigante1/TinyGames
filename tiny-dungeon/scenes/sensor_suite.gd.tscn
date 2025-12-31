@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://du7qlh4inx0k8"]
+
+[ext_resource type="Script" uid="uid://dmgp3phai31bm" path="res://scripts/sensor_suite.gd" id="1_3a2ga"]
+
+[node name="SensorSuite" type="Node2D"]
+script = ExtResource("1_3a2ga")
+
+[node name="Up" type="RayCast2D" parent="."]
+position = Vector2(0, -10)
+rotation = 3.1415927
+target_position = Vector2(0, 5)
+hit_from_inside = true
+
+[node name="Down" type="RayCast2D" parent="."]
+position = Vector2(0, 10)
+target_position = Vector2(0, 5)
+hit_from_inside = true
+
+[node name="Left" type="RayCast2D" parent="."]
+position = Vector2(-10, 0)
+rotation = 1.5707964
+target_position = Vector2(0, 5)
+hit_from_inside = true
+
+[node name="Right" type="RayCast2D" parent="."]
+position = Vector2(10, 0)
+rotation = -1.5707964
+target_position = Vector2(0, 5)
+hit_from_inside = true
