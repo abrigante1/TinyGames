@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-# Test
+# Test 2
 
 # Constants
 const TILE_SIZE := 16
