@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+# Test
+
 # Constants
 const TILE_SIZE := 16
 const MOVE_SPEED := 0.1
